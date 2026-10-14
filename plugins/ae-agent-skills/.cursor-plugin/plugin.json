@@ -4,8 +4,7 @@
   "version": "0.1.0",
   "description": "Portable Analytics Engineering skills for Cursor: corpus index and dbt session gates (dbt + Looker Studio). Project-specific mission skills are not included.",
   "author": {
-    "name": "doudjol57",
-    "email": ""
+    "name": "Converteo"
   },
   "keywords": [
     "analytics-engineering",

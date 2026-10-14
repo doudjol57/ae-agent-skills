@@ -15,9 +15,9 @@ tel quel** sur chaque machine (`~/.cursor/skills/`). Même corpus → mêmes age
 Stack ciblée (phase actuelle) : **dbt + Looker Studio (Data Studio)**.
 
 **Frontière portable vs projet :** le corpus publié (repo GitHub / marketplace)
-ne contient **pas** la mission HDI (`dbt-mission` / `mission-hdi-ae`). Celle-ci
-reste locale ou, plus tard, dans le monorepo. Une stack plus générale viendra
-dans un autre contexte.
+s’arrête à L2 (+ L0/L1 génériques). Toute **mission** (`mission-*`) est
+propre à un dépôt : elle vit en local ou dans le monorepo du projet, jamais
+dans ce package. Le slot L3 existe pour **n’importe quel** projet.
 
 ## Héritage (règle d’or)
 
@@ -41,8 +41,8 @@ Mission  →  ae-dev-gates + plugin dbt  →  tool-* / ae-*
 | L0 Domaine | `ae-*` | Tout projet AE | Modélisation, documentation (hors plugin) |
 | L1 Outil | `tool-*` + **plugin dbt** | Stack technique | BigQuery, Looker Studio ; dbt = plugin |
 | L2 Gates | `ae-dev-gates` | Tout projet dbt | Ordre de session + gates (pas de reformulation dbt) |
-| L3 Mission | `mission-*` / `dbt-mission` | Un dépôt | Sandbox, conventions, GitLab, interfaces |
-| L4 Tâche | sections ou `task-*` | Une routine | Attribution, triage tests, etc. |
+| L3 Mission | `mission-*` | Un dépôt / un projet | Sandbox, conventions, GitLab, interfaces |
+| L4 Tâche | sections ou `task-*` | Une routine du projet | Routines métier locales |
 
 `dbt-classic` = **redirigé** vers `ae-dev-gates` (compat liens anciens).
 
@@ -63,7 +63,7 @@ Légende : **OK** · **AMÉLIORER** · **ÉCRIRE** · **ARCHIVER** · **RÉUTILI
 | Skill | Statut | Rôle |
 |-------|--------|------|
 | Plugin dbt | **RÉUTILISER** | Source de vérité modélisation + CLI |
-| `tool-bigquery` | **ÉCRIRE** | Dry-run / seuils coût — extraire de `dbt-mission` |
+| `tool-bigquery` | **ÉCRIRE** | Dry-run / seuils coût — extraire des missions locales |
 | `tool-looker-studio` | **ÉCRIRE** | Exposures, viz, types LS-friendly |
 | Plugin GitLab | **RÉUTILISER** | CI si besoin |
 | Omni | **hors scope** | |
@@ -77,17 +77,21 @@ Légende : **OK** · **AMÉLIORER** · **ÉCRIRE** · **ARCHIVER** · **RÉUTILI
 
 ### L3 — Mission (hors package portable)
 
-| Skill | Statut | Rôle |
-|-------|--------|------|
-| `dbt-mission` (+ `project-hdi.md`) | **hors marketplace** · **AMÉLIORER →** `mission-hdi-ae` | Deltas HDI uniquement ; vit en local / monorepo, **pas** dans le plugin GitHub |
-| `project-hdi.md` | **hors marketplace** | Référence envs / schedules / DPRS |
+Pattern obligatoire pour **tout** projet :
+
+| Élément | Statut | Rôle |
+|---------|--------|------|
+| `mission-<projet>` | **hors marketplace** | Deltas du dépôt uniquement ; hérite de `ae-dev-gates` + plugin dbt |
+| `project-*.md` | **hors marketplace** | Réf. envs / schedules / interfaces, lue à la demande |
+
+Chaque équipe / dépôt fournit sa propre instance. Exemple local non publié :
+`dbt-mission` → à renommer `mission-hdi-ae` + `project-hdi.md` (ne pas merger
+ici).
 
 ### L4 — Tâches
 
-| Tâche | Statut |
-|-------|--------|
-| Triage warnings `tag:sales` | **EXTRACTION** depuis `dbt-mission` |
-| Attribution GA4 / Ads / Newsletter | **EXTRACTION** |
+Routines rattachées à **une** mission (hors package). Exemple local non publié :
+triage tests, attribution campagnes — à extraire de la mission concernée.
 
 ### Orphelins
 
@@ -99,14 +103,15 @@ Légende : **OK** · **AMÉLIORER** · **ÉCRIRE** · **ARCHIVER** · **RÉUTILI
 ## Matrice d’héritage cible
 
 ```text
-ae-corpus
+ae-corpus                          ← package portable
 ├── ae-data-modeling / ae-documentation     (L0)
 ├── tool-bigquery / tool-looker-studio      (L1)
 ├── plugin dbt (externe)                    (L1)
-├── ae-dev-gates                            (L2)
-└── mission-hdi-ae / dbt-mission            (L3)
-    ├── project-hdi.md
-    └── tasks/…
+└── ae-dev-gates                            (L2)
+
+mission-<projet>                   ← hors package (un par dépôt)
+├── project-*.md
+└── tasks/…                        (L4)
 ```
 
 En-tête type mission :
@@ -126,7 +131,7 @@ Ce skill n’ajoute que les deltas ci-dessous.
 | Situation | Skills |
 |-----------|--------|
 | Session dbt générique | `ae-dev-gates` + plugin dbt |
-| Dev HDI `bigquery-dbt` | `dbt-mission` (tire gates + plugin) |
+| Dev dans un dépôt avec mission | `mission-<projet>` (tire gates + plugin) |
 | Coût / dry-run BQ | `tool-bigquery` |
 | Data Studio / viz | `tool-looker-studio` |
 | Onboarding corpus | **`ae-corpus`** |
@@ -141,7 +146,7 @@ Voir [INSTALL.md](INSTALL.md).
 1. Écrire L0 (`ae-data-modeling`, `ae-documentation`).
 2. Extraire `tool-bigquery`.
 3. Écrire `tool-looker-studio`.
-4. Refactor mission → `mission-hdi-ae` + L4.
+4. Côté projets : aligner chaque mission locale sur `mission-*` + L4 (hors repo).
 5. Archiver stubs + supprimer `dbt-classic` quand plus aucun lien.
 6. Tenir ce catalogue à jour.
 

@@ -14,7 +14,7 @@ Orchestration + **gates** uniquement. Pour le savoir dbt (modèles, `ref()`,
 `using-dbt-for-analytics-engineering`, `running-dbt-commands`, et leurs
 `references/`.
 
-Une mission projet (ex. HDI) peut durcir ces gates ; en cas de conflit, la
+Une mission projet (`mission-*`) peut durcir ces gates ; en cas de conflit, la
 mission prévaut.
 
 ## Ordre de session
@@ -96,7 +96,7 @@ Seuils chiffrés = mission ou `tool-bigquery`, pas ce skill.
 ```
 
 Documenter ce qui a **réellement** été exécuté. Une mission peut imposer un
-template plus strict (ex. triage tests HDI).
+template plus strict (ex. triage de tests locaux).
 
 ## Checklist courte
 

@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Team marketplace — portable Analytics Engineering skills (dbt gates today; BI/transform tools planned). No project-specific mission skills.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "ae-agent-skills",
       "source": "ae-agent-skills",
-      "description": "Corpus index (ae-corpus) and dbt session gates (ae-dev-gates). Planned L0/L1 tool skills; mission skills stay per-project, outside this package."
+      "description": "Corpus index, dbt session gates, and L0 domain stubs. Planned L1 tool skills; mission skills stay per-project, outside this package."
     }
   ]
 }

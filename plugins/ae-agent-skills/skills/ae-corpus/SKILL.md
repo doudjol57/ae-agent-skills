@@ -50,13 +50,13 @@ Mission  →  ae-dev-gates + dbt plugin  →  tool-* / ae-*
 
 Legend: **OK** · **WRITE** · **IMPROVE** · **ARCHIVE** · **REUSE** · **DEPRECATED**
 
-### L0 — Domain (planned)
+### L0 — Domain (stubs — expand with AEs)
 
 | Skill | Status | Role |
 |-------|--------|------|
-| `ae-data-modeling` | **WRITE** | Grain, layers, contracts — what the plugin does not freeze for the team |
-| `ae-documentation` | **WRITE** | YAML / exposures / BI docs — complement official guides |
-| `ae-data-testing` | **WRITE** (v2) | May start as a section inside `ae-data-modeling` |
+| `ae-data-modeling` | **IMPROVE** | Grain, layers, contracts — stub on disk |
+| `ae-documentation` | **IMPROVE** | YAML / exposures / BI docs — stub on disk |
+| `ae-data-testing` | **IMPROVE** | Standalone stub; may later fold into modeling |
 
 ### L1 — Tool
 
@@ -98,7 +98,7 @@ examples: test triage, campaign attribution — extract from the relevant missio
 
 ```text
 ae-corpus                          ← portable package
-├── ae-data-modeling / ae-documentation / ae-data-testing  (L0, planned)
+├── ae-data-modeling / ae-documentation / ae-data-testing  (L0, stubs)
 ├── tool-bigquery / tool-looker-studio / …                 (L1, planned)
 ├── dbt plugin (external)                                  (L1)
 └── ae-dev-gates                                           (L2, shipped)
@@ -125,6 +125,9 @@ This skill adds only the deltas below.
 | Situation | Skills |
 |-----------|--------|
 | Generic dbt session | `ae-dev-gates` + dbt plugin |
+| Grain / layers / contracts | `ae-data-modeling` (stub) |
+| YAML / exposures / BI docs | `ae-documentation` (stub) |
+| Test strategy | `ae-data-testing` (stub) |
 | Dev in a repo with a mission | `mission-<project>` (pulls gates + plugin) |
 | Cost / BQ dry-run | `tool-bigquery` (when shipped) |
 | Data Studio / viz | `tool-looker-studio` (when shipped) |
@@ -142,7 +145,7 @@ Short template (frontmatter, inheritance headers by layer, MR checklist):
 
 ## Build order (next)
 
-1. Write L0 (`ae-data-modeling`, `ae-documentation`; decide `ae-data-testing`).
+1. Expand L0 stubs with AE collaboration (`IMPROVE` → `OK`).
 2. Write `tool-bigquery`, then `tool-looker-studio`.
 3. Projects: align each local mission on `mission-*` + L4 (outside this repo).
 4. P2 tools one skill at a time (`tool-omni` first if demand is highest).

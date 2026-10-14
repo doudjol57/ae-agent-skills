@@ -1,14 +1,17 @@
 {
   "name": "ae-agent-skills",
   "displayName": "AE Agent Skills",
-  "version": "0.1.0",
-  "description": "Portable Analytics Engineering skills for Cursor: corpus index and dbt session gates. Broader BI/transform tool skills planned. Project-specific mission skills are not included.",
+  "version": "0.2.0",
+  "description": "Portable Analytics Engineering skills for Cursor: corpus index, dbt session gates, and L0 domain stubs (modeling, documentation, testing). Broader BI/transform tool skills planned. Project-specific mission skills are not included.",
   "author": {
     "name": "Converteo"
   },
   "keywords": [
     "analytics-engineering",
     "dbt",
+    "data-modeling",
+    "documentation",
+    "data-testing",
     "bigquery",
     "looker-studio",
     "skills"

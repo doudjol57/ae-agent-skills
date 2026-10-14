@@ -135,6 +135,11 @@ This skill adds only the deltas below.
 Repo: Converteo private team marketplace (GitHub org).  
 Install: root [README.md](../../../../README.md) (canonical). Short notes: [INSTALL.md](INSTALL.md).
 
+## Authoring a new skill
+
+Short template (frontmatter, inheritance headers by layer, MR checklist):
+[skill-template.md](skill-template.md).
+
 ## Build order (next)
 
 1. Write L0 (`ae-data-modeling`, `ae-documentation`; decide `ae-data-testing`).

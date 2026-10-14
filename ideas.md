@@ -93,9 +93,9 @@ Thin AE skills: **do not fork** official Cursor / vendor plugins. Point at them;
 
 ## Cross-cutting — skill authoring
 
-Apply on every new skill MR:
+Apply on every new skill MR (see `ae-corpus/skill-template.md`):
 
-- [ ] Document a short **skill template**: inheritance header, YAML frontmatter, under ~500 lines `SKILL.md`, detail in sibling `reference.md`
+- [x] Document a short **skill template**: inheritance header, YAML frontmatter, under ~500 lines `SKILL.md`, detail in sibling `reference.md`
 - [ ] Always update `ae-corpus` catalogue status
 - [ ] Always update marketplace `plugin.json` when the packaged surface changes
 - [ ] Keep L3/L4 (`mission-*`, tasks) **out** of this repo
@@ -105,7 +105,7 @@ Apply on every new skill MR:
 ## Suggested MR sequence
 
 1. ~~Translation EN + README / catalogue / INSTALL sync (P0)~~
-2. Skill authoring template (short doc or section in `ae-corpus`)
+2. ~~Skill authoring template (short doc or section in `ae-corpus`)~~
 3. L0 domain skills
 4. `tool-bigquery` + `tool-looker-studio`
 5. P2 tools one MR each (Omni first if Converteo demand is highest)

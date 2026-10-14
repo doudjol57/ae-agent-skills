@@ -1,0 +1,18 @@
+{
+  "name": "ae-agent-skills",
+  "displayName": "AE Agent Skills",
+  "version": "0.1.0",
+  "description": "Portable Analytics Engineering skills for Cursor: corpus index and dbt session gates (dbt + Looker Studio). Project-specific mission skills are not included.",
+  "author": {
+    "name": "doudjol57",
+    "email": ""
+  },
+  "keywords": [
+    "analytics-engineering",
+    "dbt",
+    "bigquery",
+    "looker-studio",
+    "skills"
+  ],
+  "license": "MIT"
+}

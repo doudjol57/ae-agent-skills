@@ -9,7 +9,7 @@ Working backlog for this repo. Not a skill; track work here, then ship via focus
 | Priority | Theme |
 |----------|--------|
 | **P0** | English everywhere + README / catalogue / install docs aligned |
-| **P1** | Domain skills (L0) + first tool skills (`tool-bigquery`, `tool-looker-studio`) |
+| **P1** | Domain skills (L0) + first tool skills (`tool-bigquery`, `tool-data-studio`) |
 | **P2** | Broader BI / transform tools (Omni, Power BI, Dataform, SQLMesh) |
 
 ---
@@ -63,13 +63,14 @@ Working backlog for this repo. Not a skill; track work here, then ship via focus
 
 | Skill | Notes |
 |-------|--------|
-| `tool-bigquery` | Dry-run / cost thresholds — extract from local missions |
-| `tool-looker-studio` | Exposures, viz, LS-friendly types |
+| `tool-bigquery` | Dry-run / cost thresholds — stub (no Cursor marketplace AE plugin) |
+| `tool-data-studio` | Exposures, viz, Data Studio–friendly types (was Looker Studio name) |
 
-- [ ] Write `tool-bigquery`
-- [ ] Write `tool-looker-studio`
-- [ ] Register each in `ae-corpus` catalogue + architecture
-- [ ] Bump `plugins/ae-agent-skills/.cursor-plugin/plugin.json` description / keywords / version when a skill ships
+- [x] Write `tool-bigquery` (stub)
+- [x] Write `tool-data-studio` (stub; rename from looker-studio)
+- [x] Register each in `ae-corpus` catalogue + architecture
+- [x] Bump `plugin.json` / marketplace to `0.3.0`
+- [ ] Expand L1 stubs with AE collaboration (`IMPROVE` → `OK`)
 
 ---
 
@@ -108,5 +109,5 @@ Apply on every new skill MR (see `ae-corpus/skill-template.md`):
 1. ~~Translation EN + README / catalogue / INSTALL sync (P0)~~
 2. ~~Skill authoring template (short doc or section in `ae-corpus`)~~
 3. ~~L0 domain skills (stubs)~~ → expand with AEs
-4. `tool-bigquery` + `tool-looker-studio`
+4. ~~`tool-bigquery` + `tool-data-studio` (stubs)~~ → expand with AEs
 5. P2 tools one MR each (Omni first if Converteo demand is highest)

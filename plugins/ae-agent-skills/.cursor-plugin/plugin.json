@@ -1,8 +1,8 @@
 {
   "name": "ae-agent-skills",
   "displayName": "AE Agent Skills",
-  "version": "0.2.0",
-  "description": "Portable Analytics Engineering skills for Cursor: corpus index, dbt session gates, and L0 domain stubs (modeling, documentation, testing). Broader BI/transform tool skills planned. Project-specific mission skills are not included.",
+  "version": "0.3.0",
+  "description": "Portable Analytics Engineering skills for Cursor: corpus index, dbt session gates, L0 domain stubs, and L1 tool stubs (BigQuery, Data Studio). Broader BI/transform tools planned. Project-specific mission skills are not included.",
   "author": {
     "name": "Converteo"
   },
@@ -13,7 +13,7 @@
     "documentation",
     "data-testing",
     "bigquery",
-    "looker-studio",
+    "data-studio",
     "skills"
   ],
   "license": "MIT"

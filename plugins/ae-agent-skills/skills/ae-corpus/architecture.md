@@ -1,7 +1,7 @@
 # AE Corpus — architecture diagrams
 
-L0 skills are **stubs** on disk (expand with AEs). L1 `tool-*` nodes remain
-planned until written. `ae-corpus` and `ae-dev-gates` are complete for v0.
+L0 and core L1 (`tool-bigquery`, `tool-data-studio`) are **stubs** on disk.
+Other L1 `tool-*` remain planned. `ae-corpus` and `ae-dev-gates` are complete for v0.
 
 ## Top → bottom view
 
@@ -13,9 +13,9 @@ flowchart TB
     ADT[ae-data-testing]
   end
 
-  subgraph L1 [L1 Tool — planned + external]
+  subgraph L1 [L1 Tool — stubs + planned + external]
     TBQ[tool-bigquery]
-    TLS[tool-looker-studio]
+    TDS[tool-data-studio]
     TOM[tool-omni / PBI / …]
     PDBT[Official dbt plugin]
   end
@@ -40,7 +40,7 @@ flowchart TB
   TBQ --> GATES
   GATES --> MH
   TBQ --> MH
-  TLS --> MH
+  TDS --> MH
   TOM --> MH
   PDBT --> MH
   PH --> MH
@@ -81,9 +81,10 @@ mindmap
       ae-data-modeling
       ae-documentation
       ae-data-testing
-    Planned L1
+    L1 stubs
       tool-bigquery
-      tool-looker-studio
+      tool-data-studio
+    Planned L1
       tool-omni
       tool-power-bi
       tool-dataform

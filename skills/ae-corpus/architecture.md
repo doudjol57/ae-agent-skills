@@ -19,14 +19,14 @@ flowchart TB
     GATES[ae-dev-gates]
   end
 
-  subgraph L3 [L3 Mission HDI — hors marketplace]
-    MH[dbt-mission / mission-hdi-ae]
-    PH[project-hdi.md]
+  subgraph L3 [L3 Mission — hors marketplace]
+    MH[mission-projet]
+    PH[project-ref.md]
   end
 
   subgraph L4 [L4 Tâches]
-    T1[sales-test-triage]
-    T2[attribution-ga4]
+    T1[task-a]
+    T2[task-b]
   end
 
   PDBT -.->|savoir dbt ne pas forker| GATES
@@ -42,12 +42,15 @@ flowchart TB
   MH --> T2
 ```
 
+L3 / L4 sont des **emplacements** : chaque dépôt a sa propre mission (`mission-*`)
+et ses tâches. Le package portable ne les contient pas.
+
 ## Flux d’une session
 
 ```mermaid
 flowchart LR
   Q[Demande] --> IDX{ae-corpus}
-  IDX -->|HDI| M[dbt-mission]
+  IDX -->|mission projet| M[mission-projet]
   IDX -->|générique| G[ae-dev-gates]
   M --> G
   G --> P[Plugin dbt]
@@ -91,8 +94,9 @@ mindmap
       tool-looker-studio
       L0 domaine
     Hors package
-      Mission HDI
-      project-hdi.md
+      Mission projet mission-*
+      project-*.md
+      Tâches L4
       Ingestion
       Omni
       dbt-classic contenu

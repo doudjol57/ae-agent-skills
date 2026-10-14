@@ -11,7 +11,7 @@ Objectif : chaque personne charge le **même** plugin portable.
 
 ## Bundle portable (ce repo / marketplace)
 
-Uniquement L0–L2 (+ outils génériques). **Pas** de mission projet (ex. HDI).
+Uniquement L0–L2 (+ outils génériques). **Aucune** mission projet (`mission-*`).
 
 ```text
 skills/
@@ -45,9 +45,10 @@ ln -sfn /path/to/ae-agent-skills ~/.cursor/plugins/local/ae-agent-skills
 
 ## Mission projet (hors package)
 
-Ex. HDI : reste en local (`~/.cursor/skills/dbt-mission/`) ou plus tard dans le monorepo.
+Chaque dépôt apporte sa propre `mission-*` (local `~/.cursor/skills/` ou
+monorepo). Ce package ne la fournit pas.
 
-Installer : **ce plugin** + **mission projet**.
+Installer : **ce plugin** + **la mission du projet**.
 
 ## Contribution
 

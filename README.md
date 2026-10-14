@@ -3,7 +3,7 @@
 Portable **Analytics Engineering** skills for [Cursor](https://cursor.com) Agent.
 
 Stack focus: **dbt + Looker Studio (Data Studio)**.  
-Does **not** include project-specific mission skills (e.g. HDI `dbt-mission`).
+Does **not** include project-specific mission skills (`mission-*` — one per repo).
 
 Repo: https://github.com/doudjol57/ae-agent-skills
 

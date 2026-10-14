@@ -4,7 +4,7 @@
     "name": "Converteo"
   },
   "metadata": {
-    "description": "Team marketplace — portable Analytics Engineering skills (dbt + Looker Studio). No project-specific mission skills.",
+    "description": "Team marketplace — portable Analytics Engineering skills (dbt gates today; BI/transform tools planned). No project-specific mission skills.",
     "version": "0.1.0",
     "pluginRoot": "plugins"
   },
@@ -12,7 +12,7 @@
     {
       "name": "ae-agent-skills",
       "source": "ae-agent-skills",
-      "description": "Corpus index (ae-corpus) and dbt session gates (ae-dev-gates). Mission skills stay per-project, outside this package."
+      "description": "Corpus index (ae-corpus) and dbt session gates (ae-dev-gates). Planned L0/L1 tool skills; mission skills stay per-project, outside this package."
     }
   ]
 }

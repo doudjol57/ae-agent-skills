@@ -98,9 +98,10 @@ Thin AE skills: **do not fork** official Cursor / vendor plugins. Point at them;
 Apply on every new skill MR (see `ae-corpus/skill-template.md`):
 
 - [x] Document a short **skill template**: inheritance header, YAML frontmatter, under ~500 lines `SKILL.md`, detail in sibling `reference.md`
+- [x] Ship **mission-template** (copy-paste L3 kit under `ae-corpus/`; not a loadable marketplace skill)
 - [ ] Always update `ae-corpus` catalogue status
 - [ ] Always update marketplace `plugin.json` when the packaged surface changes
-- [ ] Keep L3/L4 (`mission-*`, tasks) **out** of this repo
+- [ ] Keep L3/L4 (`mission-*`, tasks) **out** of this repo (template docs OK)
 
 ---
 
@@ -110,4 +111,5 @@ Apply on every new skill MR (see `ae-corpus/skill-template.md`):
 2. ~~Skill authoring template (short doc or section in `ae-corpus`)~~
 3. ~~L0 domain skills (stubs)~~ → expand with AEs
 4. ~~`tool-bigquery` + `tool-data-studio` (stubs)~~ → expand with AEs
-5. P2 tools one MR each (Omni first if Converteo demand is highest)
+5. ~~Mission bootstrap template (`ae-corpus/mission-template/`)~~
+6. P2 tools one MR each (Omni first if Converteo demand is highest)

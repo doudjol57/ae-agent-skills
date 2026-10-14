@@ -42,13 +42,28 @@ plugins/ae-agent-skills/
 
 ## Project mission (outside package)
 
-Each repo brings its own `mission-*` (local skills or monorepo). Install:
-**this plugin** + **the project mission**.
+Install: **this plugin** + **one `mission-<project>` per repo**.
+
+Missions are not in the marketplace. Bootstrap from the copy-paste kit:
+
+[mission-template/README.md](mission-template/README.md)
+
+```text
+# Preferred layout in the project repo
+.cursor/skills/mission-<project>/
+├── SKILL.md                 # from SKILL.md.template — deltas + inheritance
+├── project-<project>.md     # envs / schedules / interfaces
+└── tasks/…                  # optional L4 routines
+```
+
+Every mission must keep the **Required inheritance** block pointing at
+`ae-dev-gates`, the dbt plugin, and any relevant `tool-*` / `ae-*`.
 
 ## Contribution
 
 - Do not restate the dbt plugin → `ae-dev-gates` + plugin links.
-- Every mission declares inheritance to `ae-dev-gates`.
-- Update `ae-corpus/SKILL.md` in the same change.
+- Every mission declares inheritance to `ae-dev-gates` (use mission-template).
+- Update `ae-corpus/SKILL.md` in the same change when the portable surface changes.
 - New plugin under `plugins/` → entry in `marketplace.json`.
 - Skill bodies and corpus docs: **English only**.
+- Do not add real `mission-*` skills under `plugins/…/skills/` — template only.

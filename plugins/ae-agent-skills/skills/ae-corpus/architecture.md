@@ -49,7 +49,8 @@ flowchart TB
 ```
 
 L3 / L4 are **slots**: each repo owns its mission (`mission-*`) and tasks.
-The portable package does not contain them.
+The portable package does not contain them. Bootstrap kit (docs only, not a
+loadable skill): [mission-template/](mission-template/).
 
 ## Session flow
 

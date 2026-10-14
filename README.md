@@ -26,9 +26,9 @@ plugins/ae-agent-skills/          # the plugin
 |-------|--------|------|
 | [`ae-corpus`](plugins/ae-agent-skills/skills/ae-corpus/) | **Shipped** | Index, inheritance rules, catalog, architecture diagrams |
 | [`ae-dev-gates`](plugins/ae-agent-skills/skills/ae-dev-gates/) | **Shipped** | Session gates: isolated target, join cardinality, lint, cost, MR |
-| `ae-data-modeling` | Planned | Grain, layers, contracts |
-| `ae-documentation` | Planned | YAML / exposures / BI docs |
-| `ae-data-testing` | Planned | Testing patterns (may start inside modeling) |
+| [`ae-data-modeling`](plugins/ae-agent-skills/skills/ae-data-modeling/) | **Stub** | Grain, layers, contracts — expand with AEs |
+| [`ae-documentation`](plugins/ae-agent-skills/skills/ae-documentation/) | **Stub** | YAML / exposures / BI docs — expand with AEs |
+| [`ae-data-testing`](plugins/ae-agent-skills/skills/ae-data-testing/) | **Stub** | Testing patterns — may later fold into modeling |
 | `tool-bigquery` | Planned | Dry-run / cost thresholds |
 | `tool-looker-studio` | Planned | Exposures, viz, LS-friendly types |
 | `tool-omni` | Planned | Point at Omni skills + AE deltas |

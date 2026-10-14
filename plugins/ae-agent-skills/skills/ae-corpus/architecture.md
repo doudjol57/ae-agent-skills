@@ -1,13 +1,13 @@
 # AE Corpus — architecture diagrams
 
-Nodes marked **(planned)** are catalogued but not yet on disk in this package.
-Only `ae-corpus` and `ae-dev-gates` are shipped today.
+L0 skills are **stubs** on disk (expand with AEs). L1 `tool-*` nodes remain
+planned until written. `ae-corpus` and `ae-dev-gates` are complete for v0.
 
 ## Top → bottom view
 
 ```mermaid
 flowchart TB
-  subgraph L0 [L0 Domain — planned]
+  subgraph L0 [L0 Domain — stubs]
     ADM[ae-data-modeling]
     ADOc[ae-documentation]
     ADT[ae-data-testing]
@@ -77,7 +77,7 @@ mindmap
       ae-corpus
       ae-dev-gates
       Official dbt plugin external
-    Planned L0
+    L0 stubs
       ae-data-modeling
       ae-documentation
       ae-data-testing

@@ -46,17 +46,18 @@ Working backlog for this repo. Not a skill; track work here, then ship via focus
 
 ## P1 — Missing domain & core tool skills
 
-### L0 — Domain (cited, not written)
+### L0 — Domain (stubs on disk — expand with AEs)
 
 | Skill | Notes |
 |-------|--------|
-| `ae-data-modeling` | Grain, layers, contracts — what the dbt plugin does not freeze for the team |
-| `ae-documentation` | YAML / exposures / BI docs — complement official guides |
-| `ae-data-testing` | v2; may start as a section inside `ae-data-modeling` |
+| `ae-data-modeling` | Grain, layers, contracts — stub shipped |
+| `ae-documentation` | YAML / exposures / BI docs — stub shipped |
+| `ae-data-testing` | Standalone stub for now; may later fold into modeling |
 
-- [ ] Write `ae-data-modeling`
-- [ ] Write `ae-documentation`
-- [ ] Decide: standalone `ae-data-testing` vs section in modeling; then write or fold
+- [x] Write `ae-data-modeling` (stub)
+- [x] Write `ae-documentation` (stub)
+- [x] Decide: standalone `ae-data-testing` stub for collaboration (fold later if useful)
+- [ ] Expand L0 stubs with AE collaboration (`IMPROVE` → `OK`)
 
 ### L1 — Core tools (already in catalogue)
 
@@ -106,6 +107,6 @@ Apply on every new skill MR (see `ae-corpus/skill-template.md`):
 
 1. ~~Translation EN + README / catalogue / INSTALL sync (P0)~~
 2. ~~Skill authoring template (short doc or section in `ae-corpus`)~~
-3. L0 domain skills
+3. ~~L0 domain skills (stubs)~~ → expand with AEs
 4. `tool-bigquery` + `tool-looker-studio`
 5. P2 tools one MR each (Omni first if Converteo demand is highest)

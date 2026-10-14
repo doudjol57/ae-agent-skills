@@ -81,17 +81,12 @@ unless the gate set is truly separate.
 
 ### L3 / L4 — not in this package
 
-```markdown
-## Required inheritance
+Do **not** author real missions here. Copy the kit:
 
-1. [ae-dev-gates](../ae-dev-gates/SKILL.md)
-2. dbt plugin — using-dbt-for-analytics-engineering, running-dbt-commands
-3. Relevant `tool-*` / `ae-*` from the portable package
+→ **[mission-template/](mission-template/)** (`README.md` + `SKILL.md.template` + `project-example.md`)
 
-This skill adds only the deltas below.
-```
-
-Ship `mission-*` and tasks in the **project** repo or local `~/.cursor/skills/`.
+Ship the filled mission under the **project** repo
+(`.cursor/skills/mission-<project>/`) or `~/.cursor/skills/`.
 
 ## Rules of thumb
 

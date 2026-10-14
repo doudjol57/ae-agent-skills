@@ -1,0 +1,69 @@
+---
+name: mission-{{project-slug}}
+description: >-
+  Project mission for {{project-name}} ({{stack-summary}}). Use when working in
+  the {{project-slug}} repo, on {{project-name}} dbt/BI work, or when the user
+  mentions {{discovery-keywords}}.
+---
+
+# Mission — {{project-name}}
+
+L3 project skill. **Deltas only** — portable AE behavior comes from parents.
+
+## Required inheritance
+
+Read and apply these **before** the deltas below (skip lines that do not apply):
+
+1. `ae-dev-gates` — session order: isolated target, join cardinality, lint, cost, MR
+2. Official dbt plugin — `using-dbt-for-analytics-engineering`, `running-dbt-commands`
+3. `ae-data-modeling` / `ae-documentation` / `ae-data-testing` when grain, docs, or tests are in scope
+4. `tool-bigquery` when running or costing BigQuery
+5. `tool-data-studio` when building or documenting Data Studio / Looker Studio
+
+This skill adds **only** the project deltas below. Do not restate parent content.
+On explicit conflict, **this mission** (or an L4 task it links) wins.
+
+## When to use
+
+- Any Analytics Engineering session in the **{{project-name}}** repository
+- {{extra-triggers}}
+
+## Project deltas
+
+### Sandbox / targets
+
+- Default dbt target / profile: `{{dbt-target}}`
+- Dev dataset / schema pattern: `{{dev-schema-pattern}}`
+- Forbidden production writes from local sessions: `{{prod-guardrails}}`
+
+### Repo & delivery
+
+- Git remote / default branch: `{{git-remote-default-branch}}`
+- MR / PR conventions: `{{mr-conventions}}`
+- CI notes (optional): `{{ci-notes}}`
+
+### Interfaces & stakeholders
+
+- Upstream / downstream systems: `{{interfaces}}`
+- Who to ping for grain / KPI disputes: `{{owners}}`
+
+### Conventions (project-only)
+
+- Naming or layering quirks **not** covered by `ae-data-modeling`: `{{conventions}}`
+
+## Project references
+
+Read on demand (do not paste large tables into this file):
+
+- [project-{{project-slug}}.md](./project-{{project-slug}}.md) — envs, schedules, interface detail
+
+## L4 tasks (optional)
+
+Link project-only routines here (separate files under `tasks/` preferred):
+
+- <!-- e.g. [tasks/triage-tests.md](./tasks/triage-tests.md) -->
+
+## Out of scope
+
+- Portable gates, modeling principles, CLI how-tos → parents above
+- Other clients / repos → their own `mission-*`

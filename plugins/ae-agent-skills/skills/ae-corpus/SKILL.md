@@ -86,6 +86,11 @@ Required pattern for **every** project:
 | `mission-<project>` | **outside marketplace** | Repo deltas only; inherits `ae-dev-gates` + dbt plugin |
 | `project-*.md` | **outside marketplace** | Env / schedule / interface refs, read on demand |
 
+**Bootstrap:** copy [mission-template/](mission-template/) into the project repo
+(or `~/.cursor/skills/`), rename placeholders, keep the inheritance header.
+See [mission-template/README.md](mission-template/README.md). The template is
+documentation only — Cursor must not treat it as a loadable skill.
+
 Each team / repo provides its own instance. Local unpublished example:
 `dbt-mission` → rename to `mission-hdi-ae` + `project-hdi.md` (do not merge here).
 
@@ -109,14 +114,14 @@ mission-<project>                  ← outside package (one per repo)
 └── tasks/…                        (L4)
 ```
 
-Typical mission header:
+Typical mission header (full copy-paste kit: [mission-template/SKILL.md.template](mission-template/SKILL.md.template)):
 
 ```markdown
 ## Required inheritance
 
-1. [ae-dev-gates](../ae-dev-gates/SKILL.md)
+1. ae-dev-gates
 2. dbt plugin — using-dbt-for-analytics-engineering, running-dbt-commands
-3. [tool-bigquery](../tool-bigquery/SKILL.md) when running BQ
+3. tool-bigquery / tool-data-studio / ae-* when relevant
 
 This skill adds only the deltas below.
 ```
@@ -141,13 +146,15 @@ Install: root [README.md](../../../../README.md) (canonical). Short notes: [INST
 
 ## Authoring a new skill
 
-Short template (frontmatter, inheritance headers by layer, MR checklist):
-[skill-template.md](skill-template.md).
+- Portable L0–L2: [skill-template.md](skill-template.md) (frontmatter, inheritance
+  by layer, MR checklist).
+- Project L3 mission: [mission-template/](mission-template/) (copy into the
+  project repo — not shipped as a marketplace skill).
 
 ## Build order (next)
 
 1. Expand L0 / L1 stubs with AE collaboration (`IMPROVE` → `OK`).
-2. Projects: align each local mission on `mission-*` + L4 (outside this repo).
+2. Projects: bootstrap each local mission from [mission-template/](mission-template/).
 3. P2 tools one skill at a time (`tool-omni` first if demand is highest).
 4. Keep this catalog up to date.
 

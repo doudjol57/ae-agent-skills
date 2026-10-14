@@ -91,12 +91,22 @@ See [ae-corpus/architecture.md](plugins/ae-agent-skills/skills/ae-corpus/archite
 ```text
 Mission (per project, not in this repo)
   → ae-dev-gates + official dbt plugin
-  → tool-* / ae-* (planned)
+  → tool-* / ae-* (stubs / planned)
 ```
+
+### Project mission (after marketplace install)
+
+Each repo adds its own `mission-<project>` (deltas only). Bootstrap from:
+
+[mission-template/](plugins/ae-agent-skills/skills/ae-corpus/mission-template/)
+
+Preferred path: `<repo>/.cursor/skills/mission-<project>/`.  
+Install for a teammate = **this package** + **that mission**.
 
 ## Contributing
 
-- Follow the [skill authoring template](plugins/ae-agent-skills/skills/ae-corpus/skill-template.md).
+- Portable skills: [skill authoring template](plugins/ae-agent-skills/skills/ae-corpus/skill-template.md).
+- Project missions: [mission-template](plugins/ae-agent-skills/skills/ae-corpus/mission-template/) (copy into the project — do not merge real `mission-*` here).
 - No reformulation of the official dbt plugin — extend via `ae-dev-gates` / new L0–L1 skills.
 - Keep each `SKILL.md` under ~500 lines; put detail in sibling markdown files.
 - Update `ae-corpus` catalog when adding a skill.

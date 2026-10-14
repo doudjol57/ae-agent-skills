@@ -2,154 +2,147 @@
 name: ae-corpus
 description: >-
   Index and architecture of the portable Analytics Engineering skill corpus
-  (dbt + Looker Studio / Data Studio). Use when choosing which skills to load,
+  (dbt, warehouses, BI tools). Use when choosing which skills to load,
   authoring or refactoring skills, onboarding a teammate to the corpus, or when
   the user asks about skill hierarchy, inheritance, or AE agent documentation.
 ---
 
-# AE Corpus — index portable
+# AE Corpus — portable index
 
-Corpus de skills Cursor pour l’Analytics Engineering, conçu pour être **copié
-tel quel** sur chaque machine (`~/.cursor/skills/`). Même corpus → mêmes agents.
+Cursor skills corpus for Analytics Engineering. Same corpus on every machine
+→ same agent behavior. Ship via the Converteo team marketplace or copy into
+`~/.cursor/skills/`.
 
-Stack ciblée (phase actuelle) : **dbt + Looker Studio (Data Studio)**.
+**Language policy:** skill bodies and corpus docs in this package are **English
+only**.
 
-**Frontière portable vs projet :** le corpus publié (repo GitHub / marketplace)
-s’arrête à L2 (+ L0/L1 génériques). Toute **mission** (`mission-*`) est
-propre à un dépôt : elle vit en local ou dans le monorepo du projet, jamais
-dans ce package. Le slot L3 existe pour **n’importe quel** projet.
+**Current focus:** dbt + Looker Studio (Data Studio), with warehouse/BI tool
+skills planned. **Portable vs project boundary:** the published package stops
+at L2 (+ generic L0/L1). Any **mission** (`mission-*`) belongs to a project
+repo — never in this package. The L3 slot exists for **any** project.
 
-## Héritage (règle d’or)
+## Inheritance (golden rule)
 
 ```text
-Mission  →  ae-dev-gates + plugin dbt  →  tool-* / ae-*
-   ↑ deltas locaux     ↑ gates session + savoir dbt officiel
+Mission  →  ae-dev-gates + dbt plugin  →  tool-* / ae-*
+   ↑ local deltas     ↑ session gates + official dbt knowledge
 ```
 
-1. Un skill **ne répète pas** ce que son parent couvre déjà.
-2. Il **pointe** vers le parent (`Lire et appliquer …`) en tête de fichier.
-3. En cas de conflit explicite, le skill **le plus bas** (mission / tâche) gagne.
-4. Les détails volumineux vont dans des `reference.md` / `project-*.md` lus à la
-   demande (progressive disclosure, < 500 lignes pour `SKILL.md`).
-5. **Ne pas forker** le plugin dbt : le référencer. Les gates perso vivent dans
-   `ae-dev-gates` uniquement.
+1. A skill **does not repeat** what its parent already covers.
+2. It **points** to the parent (`Read and apply …`) at the top of the file.
+3. On explicit conflict, the **lowest** skill (mission / task) wins.
+4. Bulky detail goes in `reference.md` / `project-*.md` read on demand
+   (progressive disclosure; keep `SKILL.md` under ~500 lines).
+5. **Do not fork** the dbt plugin — reference it. Personal gates live only in
+   `ae-dev-gates`.
 
-## Couches
+## Layers
 
-| Couche | Préfixe / nom | Portée | Contenu typique |
-|--------|---------------|--------|-----------------|
-| L0 Domaine | `ae-*` | Tout projet AE | Modélisation, documentation (hors plugin) |
-| L1 Outil | `tool-*` + **plugin dbt** | Stack technique | BigQuery, Looker Studio ; dbt = plugin |
-| L2 Gates | `ae-dev-gates` | Tout projet dbt | Ordre de session + gates (pas de reformulation dbt) |
-| L3 Mission | `mission-*` | Un dépôt / un projet | Sandbox, conventions, GitLab, interfaces |
-| L4 Tâche | sections ou `task-*` | Une routine du projet | Routines métier locales |
+| Layer | Prefix / name | Scope | Typical content |
+|-------|---------------|-------|-----------------|
+| L0 Domain | `ae-*` | Any AE project | Modeling, documentation (beyond the plugin) |
+| L1 Tool | `tool-*` + **dbt plugin** | Tech stack | BigQuery, Looker Studio, …; dbt = official plugin |
+| L2 Gates | `ae-dev-gates` | Any dbt project | Session order + gates (no dbt rehash) |
+| L3 Mission | `mission-*` | One repo / project | Sandbox, conventions, GitLab, interfaces |
+| L4 Task | sections or `task-*` | One project routine | Local business routines |
 
-`dbt-classic` = **redirigé** vers `ae-dev-gates` (compat liens anciens).
+## Catalog — current state
 
-## Catalogue — état actuel
+Legend: **OK** · **WRITE** · **IMPROVE** · **ARCHIVE** · **REUSE** · **DEPRECATED**
 
-Légende : **OK** · **AMÉLIORER** · **ÉCRIRE** · **ARCHIVER** · **RÉUTILISER** · **DÉPRÉCIÉ**
+### L0 — Domain (planned)
 
-### L0 — Domaine (à écrire)
-
-| Skill | Statut | Rôle |
+| Skill | Status | Role |
 |-------|--------|------|
-| `ae-data-modeling` | **ÉCRIRE** | Grain, couches, contrats — ce que le plugin ne fige pas pour l’équipe |
-| `ae-documentation` | **ÉCRIRE** | YAML / exposures / doc BI — complément au guide officiel |
-| `ae-data-testing` | **ÉCRIRE** (v2) | Peut démarrer dans `ae-data-modeling` |
+| `ae-data-modeling` | **WRITE** | Grain, layers, contracts — what the plugin does not freeze for the team |
+| `ae-documentation` | **WRITE** | YAML / exposures / BI docs — complement official guides |
+| `ae-data-testing` | **WRITE** (v2) | May start as a section inside `ae-data-modeling` |
 
-### L1 — Outil
+### L1 — Tool
 
-| Skill | Statut | Rôle |
+| Skill | Status | Role |
 |-------|--------|------|
-| Plugin dbt | **RÉUTILISER** | Source de vérité modélisation + CLI |
-| `tool-bigquery` | **ÉCRIRE** | Dry-run / seuils coût — extraire des missions locales |
-| `tool-looker-studio` | **ÉCRIRE** | Exposures, viz, types LS-friendly |
-| Plugin GitLab | **RÉUTILISER** | CI si besoin |
-| Omni | **hors scope** | |
+| dbt plugin | **REUSE** | Source of truth for modeling + CLI |
+| `tool-bigquery` | **WRITE** | Dry-run / cost thresholds |
+| `tool-looker-studio` | **WRITE** | Exposures, viz, LS-friendly types |
+| `tool-omni` | **WRITE** | Point at Omni Cursor skills + AE deltas only |
+| `tool-power-bi` | **WRITE** | Exposures / semantic model handoff |
+| `tool-dataform` | **WRITE** | Alternate transform stack vs dbt |
+| `tool-sqlmesh` | **WRITE** | Alternate transform stack vs dbt |
+| GitLab plugin | **REUSE** | CI when needed |
 
 ### L2 — Gates
 
-| Skill | Statut | Rôle |
+| Skill | Status | Role |
 |-------|--------|------|
-| `ae-dev-gates` | **OK** | Target isolée, cardinalité, lint, coût, Git/MR |
-| `dbt-classic` | **DÉPRÉCIÉ** | Redirect → `ae-dev-gates` ; supprimer plus tard |
+| `ae-dev-gates` | **OK** | Isolated target, cardinality, lint, cost, Git/MR |
 
-### L3 — Mission (hors package portable)
+### L3 — Mission (outside portable package)
 
-Pattern obligatoire pour **tout** projet :
+Required pattern for **every** project:
 
-| Élément | Statut | Rôle |
+| Element | Status | Role |
 |---------|--------|------|
-| `mission-<projet>` | **hors marketplace** | Deltas du dépôt uniquement ; hérite de `ae-dev-gates` + plugin dbt |
-| `project-*.md` | **hors marketplace** | Réf. envs / schedules / interfaces, lue à la demande |
+| `mission-<project>` | **outside marketplace** | Repo deltas only; inherits `ae-dev-gates` + dbt plugin |
+| `project-*.md` | **outside marketplace** | Env / schedule / interface refs, read on demand |
 
-Chaque équipe / dépôt fournit sa propre instance. Exemple local non publié :
-`dbt-mission` → à renommer `mission-hdi-ae` + `project-hdi.md` (ne pas merger
-ici).
+Each team / repo provides its own instance. Local unpublished example:
+`dbt-mission` → rename to `mission-hdi-ae` + `project-hdi.md` (do not merge here).
 
-### L4 — Tâches
+### L4 — Tasks
 
-Routines rattachées à **une** mission (hors package). Exemple local non publié :
-triage tests, attribution campagnes — à extraire de la mission concernée.
+Routines attached to **one** mission (outside package). Local unpublished
+examples: test triage, campaign attribution — extract from the relevant mission.
 
-### Orphelins
-
-| Chemin | Statut |
-|--------|--------|
-| `dbt-lineage/reference.md` | OK annexe |
-| `gerard-*`, `michel-*` | **ARCHIVER** |
-
-## Matrice d’héritage cible
+## Target inheritance matrix
 
 ```text
-ae-corpus                          ← package portable
-├── ae-data-modeling / ae-documentation     (L0)
-├── tool-bigquery / tool-looker-studio      (L1)
-├── plugin dbt (externe)                    (L1)
-└── ae-dev-gates                            (L2)
+ae-corpus                          ← portable package
+├── ae-data-modeling / ae-documentation / ae-data-testing  (L0, planned)
+├── tool-bigquery / tool-looker-studio / …                 (L1, planned)
+├── dbt plugin (external)                                  (L1)
+└── ae-dev-gates                                           (L2, shipped)
 
-mission-<projet>                   ← hors package (un par dépôt)
+mission-<project>                  ← outside package (one per repo)
 ├── project-*.md
 └── tasks/…                        (L4)
 ```
 
-En-tête type mission :
+Typical mission header:
 
 ```markdown
-## Héritage obligatoire
+## Required inheritance
 
 1. [ae-dev-gates](../ae-dev-gates/SKILL.md)
-2. Plugin dbt — using-dbt-for-analytics-engineering, running-dbt-commands
-3. [tool-bigquery](../tool-bigquery/SKILL.md) si exécution BQ
+2. dbt plugin — using-dbt-for-analytics-engineering, running-dbt-commands
+3. [tool-bigquery](../tool-bigquery/SKILL.md) when running BQ
 
-Ce skill n’ajoute que les deltas ci-dessous.
+This skill adds only the deltas below.
 ```
 
-## Quand charger quoi
+## When to load what
 
 | Situation | Skills |
 |-----------|--------|
-| Session dbt générique | `ae-dev-gates` + plugin dbt |
-| Dev dans un dépôt avec mission | `mission-<projet>` (tire gates + plugin) |
-| Coût / dry-run BQ | `tool-bigquery` |
-| Data Studio / viz | `tool-looker-studio` |
-| Onboarding corpus | **`ae-corpus`** |
+| Generic dbt session | `ae-dev-gates` + dbt plugin |
+| Dev in a repo with a mission | `mission-<project>` (pulls gates + plugin) |
+| Cost / BQ dry-run | `tool-bigquery` (when shipped) |
+| Data Studio / viz | `tool-looker-studio` (when shipped) |
+| Corpus onboarding | **`ae-corpus`** |
 
-## Portabilité
+## Portability
 
-Repo : marketplace team Converteo (privé sous l’org GitHub).  
-Voir [INSTALL.md](INSTALL.md).
+Repo: Converteo private team marketplace (GitHub org).  
+Install: root [README.md](../../../../README.md) (canonical). Short notes: [INSTALL.md](INSTALL.md).
 
-## Ordre de construction suivant
+## Build order (next)
 
-1. Écrire L0 (`ae-data-modeling`, `ae-documentation`).
-2. Extraire `tool-bigquery`.
-3. Écrire `tool-looker-studio`.
-4. Côté projets : aligner chaque mission locale sur `mission-*` + L4 (hors repo).
-5. Archiver stubs + supprimer `dbt-classic` quand plus aucun lien.
-6. Tenir ce catalogue à jour.
+1. Write L0 (`ae-data-modeling`, `ae-documentation`; decide `ae-data-testing`).
+2. Write `tool-bigquery`, then `tool-looker-studio`.
+3. Projects: align each local mission on `mission-*` + L4 (outside this repo).
+4. P2 tools one skill at a time (`tool-omni` first if demand is highest).
+5. Keep this catalog up to date.
 
-## Documentation graphique
+## Diagrams
 
-Voir [architecture.md](architecture.md).
+See [architecture.md](architecture.md).

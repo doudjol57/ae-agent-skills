@@ -1,103 +1,96 @@
-# AE Corpus — documentation graphique
+# AE Corpus — architecture diagrams
 
-## Vue top → bottom
+Nodes marked **(planned)** are catalogued but not yet on disk in this package.
+Only `ae-corpus` and `ae-dev-gates` are shipped today.
+
+## Top → bottom view
 
 ```mermaid
 flowchart TB
-  subgraph L0 [L0 Domaine]
+  subgraph L0 [L0 Domain — planned]
     ADM[ae-data-modeling]
     ADOc[ae-documentation]
+    ADT[ae-data-testing]
   end
 
-  subgraph L1 [L1 Outil]
+  subgraph L1 [L1 Tool — planned + external]
     TBQ[tool-bigquery]
     TLS[tool-looker-studio]
-    PDBT[Plugin dbt officiel]
+    TOM[tool-omni / PBI / …]
+    PDBT[Official dbt plugin]
   end
 
-  subgraph L2 [L2 Gates]
+  subgraph L2 [L2 Gates — shipped]
     GATES[ae-dev-gates]
   end
 
-  subgraph L3 [L3 Mission — hors marketplace]
-    MH[mission-projet]
+  subgraph L3 [L3 Mission — outside marketplace]
+    MH[mission-project]
     PH[project-ref.md]
   end
 
-  subgraph L4 [L4 Tâches]
+  subgraph L4 [L4 Tasks — outside marketplace]
     T1[task-a]
     T2[task-b]
   end
 
-  PDBT -.->|savoir dbt ne pas forker| GATES
+  PDBT -.->|dbt knowledge — do not fork| GATES
   ADM --> GATES
   ADOc --> GATES
   TBQ --> GATES
   GATES --> MH
   TBQ --> MH
   TLS --> MH
+  TOM --> MH
   PDBT --> MH
   PH --> MH
   MH --> T1
   MH --> T2
 ```
 
-L3 / L4 sont des **emplacements** : chaque dépôt a sa propre mission (`mission-*`)
-et ses tâches. Le package portable ne les contient pas.
+L3 / L4 are **slots**: each repo owns its mission (`mission-*`) and tasks.
+The portable package does not contain them.
 
-## Flux d’une session
+## Session flow
 
 ```mermaid
 flowchart LR
-  Q[Demande] --> IDX{ae-corpus}
-  IDX -->|mission projet| M[mission-projet]
-  IDX -->|générique| G[ae-dev-gates]
+  Q[Request] --> IDX{ae-corpus}
+  IDX -->|project mission| M[mission-project]
+  IDX -->|generic| G[ae-dev-gates]
   M --> G
-  G --> P[Plugin dbt]
-  G --> Tool[tool-bigquery / LS]
-  M --> Task{Tâche L4?}
-  Task -->|oui| L4[task file]
-  Task -->|non| Impl[Deltas mission]
+  G --> P[dbt plugin]
+  G --> Tool[tool-* when relevant]
+  M --> Task{L4 task?}
+  Task -->|yes| L4[task file]
+  Task -->|no| Impl[Mission deltas]
   L4 --> Impl
-  Impl --> Out[Lint coût build MR]
+  Impl --> Out[Lint cost build MR]
 ```
 
-## Remplacement de dbt-classic
-
-```mermaid
-flowchart LR
-  subgraph before [Avant]
-    DC[dbt-classic 300 lignes]
-    OFF1[Plugin dbt]
-    DC -.->|doublon| OFF1
-  end
-
-  subgraph after [Après option B]
-    AG[ae-dev-gates mince]
-    OFF2[Plugin dbt]
-    REDIR[dbt-classic redirect]
-    AG -->|délègue savoir| OFF2
-    REDIR --> AG
-  end
-```
-
-## Périmètre phase actuelle
+## Package scope (shipped vs planned)
 
 ```mermaid
 mindmap
   root((AE Corpus portable))
-    In portable package
-      Plugin dbt externe
-      ae-dev-gates
+    Shipped
       ae-corpus
+      ae-dev-gates
+      Official dbt plugin external
+    Planned L0
+      ae-data-modeling
+      ae-documentation
+      ae-data-testing
+    Planned L1
       tool-bigquery
       tool-looker-studio
-      L0 domaine
-    Hors package
-      Mission projet mission-*
+      tool-omni
+      tool-power-bi
+      tool-dataform
+      tool-sqlmesh
+    Outside package
+      mission-*
       project-*.md
-      Tâches L4
+      L4 tasks
       Ingestion
-      Omni
-      dbt-classic contenu
 ```

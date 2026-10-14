@@ -18,29 +18,29 @@ Working backlog for this repo. Not a skill; track work here, then ship via focus
 
 ### Translate the repo to English
 
-- [ ] `plugins/ae-agent-skills/skills/ae-corpus/SKILL.md`
-- [ ] `plugins/ae-agent-skills/skills/ae-corpus/architecture.md`
-- [ ] `plugins/ae-agent-skills/skills/ae-corpus/INSTALL.md`
-- [ ] `plugins/ae-agent-skills/skills/ae-dev-gates/SKILL.md`
-- [ ] Catalogue legend: use English statuses (`OK` / `WRITE` / `IMPROVE` / `ARCHIVE` / `REUSE` / `DEPRECATED`)
-- [ ] Policy going forward: **English only** for all skill bodies and corpus docs (README / manifests already EN)
+- [x] `plugins/ae-agent-skills/skills/ae-corpus/SKILL.md`
+- [x] `plugins/ae-agent-skills/skills/ae-corpus/architecture.md`
+- [x] `plugins/ae-agent-skills/skills/ae-corpus/INSTALL.md`
+- [x] `plugins/ae-agent-skills/skills/ae-dev-gates/SKILL.md`
+- [x] Catalogue legend: use English statuses (`OK` / `WRITE` / `IMPROVE` / `ARCHIVE` / `REUSE` / `DEPRECATED`)
+- [x] Policy going forward: **English only** for all skill bodies and corpus docs (README / manifests already EN)
 
 ### Adapt the root README
 
-- [ ] Reflect multi-tool ambition (not only « dbt + Looker Studio »)
-- [ ] Clear **shipped vs planned** table (keep in sync with `ae-corpus` catalogue)
-- [ ] Include `ae-data-testing` in planned skills (today missing from « Coming later »)
+- [x] Reflect multi-tool ambition (not only « dbt + Looker Studio »)
+- [x] Clear **shipped vs planned** table (keep in sync with `ae-corpus` catalogue)
+- [x] Include `ae-data-testing` in planned skills (today missing from « Coming later »)
 
 ### Resynchronize catalogue & diagrams
 
-- [ ] `ae-corpus` catalogue: remove Omni **hors scope**; list planned `tool-*` honestly
-- [ ] `architecture.md`: mark L0/L1 nodes as planned until they exist on disk (mindmap currently looks shipped)
-- [ ] Orphans / `dbt-classic` section: state « local only, not in package » or drop from published docs
+- [x] `ae-corpus` catalogue: remove Omni out-of-scope; list planned `tool-*` honestly
+- [x] `architecture.md`: mark L0/L1 nodes as planned until they exist on disk
+- [x] Orphans / `dbt-classic`: local-only / not in package (documented; orphans dropped from published docs)
 
 ### Single source of truth for install
 
-- [ ] Align root `README.md` and `ae-corpus/INSTALL.md` (Converteo marketplace, `plugins/…` paths)
-- [ ] Prefer one canonical install path; other file short + pointer
+- [x] Align root `README.md` and `ae-corpus/INSTALL.md` (Converteo marketplace, `plugins/…` paths)
+- [x] Prefer one canonical install path; other file short + pointer
 
 ---
 
@@ -78,7 +78,7 @@ Thin AE skills: **do not fork** official Cursor / vendor plugins. Point at them;
 
 | Skill | Notes |
 |-------|--------|
-| `tool-omni` | Reverse current « hors scope »; wrap / point to Omni Cursor skills + AE deltas |
+| `tool-omni` | Wrap / point to Omni Cursor skills + AE deltas |
 | `tool-power-bi` | Exposures / semantic model handoff patterns |
 | `tool-dataform` | Alternate transform stack vs dbt |
 | `tool-sqlmesh` | Alternate transform stack vs dbt |
@@ -104,7 +104,7 @@ Apply on every new skill MR:
 
 ## Suggested MR sequence
 
-1. Translation EN + README / catalogue / INSTALL sync (P0)
+1. ~~Translation EN + README / catalogue / INSTALL sync (P0)~~
 2. Skill authoring template (short doc or section in `ae-corpus`)
 3. L0 domain skills
 4. `tool-bigquery` + `tool-looker-studio`

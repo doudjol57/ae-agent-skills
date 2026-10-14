@@ -1,62 +1,48 @@
-# Installer le corpus AE (équipe)
+# Install AE corpus (short)
 
-Objectif : chaque personne charge le **même** plugin portable via la
-**team marketplace** Converteo (privée).
+**Canonical install instructions:** root [README.md](../../../../README.md)
+(sections *Install* A / B / C).
 
-## Prérequis
+## Prerequisites
 
-- Cursor Desktop avec Agent Skills
-- Plugin **dbt** (L1 officiel — obligatoire)
-- Org Cursor Converteo (Teams / Enterprise)
+- Cursor Desktop with Agent Skills
+- Official **dbt** plugin (L1 — required; not bundled here)
+- Cursor **Teams** / **Enterprise** for the Converteo team marketplace
 
-## Bundle portable (ce repo / marketplace)
+## What this package ships
 
-Uniquement L0–L2 (+ outils génériques). **Aucune** mission projet (`mission-*`).
+L0–L2 portable skills only. **No** project missions (`mission-*`).
+
+| Status | Skills |
+|--------|--------|
+| Shipped | `ae-corpus`, `ae-dev-gates` |
+| Planned | `ae-data-modeling`, `ae-documentation`, `ae-data-testing`, `tool-bigquery`, `tool-looker-studio`, `tool-omni`, `tool-power-bi`, `tool-dataform`, `tool-sqlmesh` |
 
 ```text
 .cursor-plugin/marketplace.json
 plugins/ae-agent-skills/
 └── skills/
-    ├── ae-corpus/             # OK
-    ├── ae-dev-gates/          # OK
-    ├── ae-data-modeling/      # à venir
-    ├── ae-documentation/      # à venir
-    ├── tool-bigquery/         # à venir
-    └── tool-looker-studio/    # à venir
+    ├── ae-corpus/        # shipped
+    └── ae-dev-gates/     # shipped
 ```
 
-## Install
+## Quick paths
 
-### Team marketplace (recommandé)
+| Path | Where |
+|------|--------|
+| Team marketplace | README → *Install A* |
+| Local plugin test | README → *Install B* |
+| Personal `~/.cursor/skills/` copy | README → *Install C* |
 
-1. Repo **privé** sous l’org GitHub Converteo + Cursor GitHub App.
-2. Dashboard → Plugins & MCPs → Add Marketplace → Import from Repo.
-3. Marketplace Access = groupes Converteo concernés ; Auto Refresh on.
-4. Customize → Install **AE Agent Skills**.
+## Project mission (outside package)
 
-### Clone vers skills perso
-
-```bash
-git clone <repo-url>
-cp -R ae-agent-skills/plugins/ae-agent-skills/skills/* ~/.cursor/skills/
-```
-
-### Test plugin local
-
-```bash
-cp -R plugins/ae-agent-skills ~/.cursor/plugins/local/ae-agent-skills
-```
-
-## Mission projet (hors package)
-
-Chaque dépôt apporte sa propre `mission-*` (local `~/.cursor/skills/` ou
-monorepo). Ce package ne la fournit pas.
-
-Installer : **ce plugin** + **la mission du projet**.
+Each repo brings its own `mission-*` (local skills or monorepo). Install:
+**this plugin** + **the project mission**.
 
 ## Contribution
 
-- Pas de reformulation du plugin dbt → `ae-dev-gates` + liens plugin.
-- Toute mission déclare l’héritage vers `ae-dev-gates`.
-- Mettre à jour `ae-corpus/SKILL.md` dans le même changement.
-- Nouveau plugin sous `plugins/` → entrée dans `marketplace.json`.
+- Do not restate the dbt plugin → `ae-dev-gates` + plugin links.
+- Every mission declares inheritance to `ae-dev-gates`.
+- Update `ae-corpus/SKILL.md` in the same change.
+- New plugin under `plugins/` → entry in `marketplace.json`.
+- Skill bodies and corpus docs: **English only**.

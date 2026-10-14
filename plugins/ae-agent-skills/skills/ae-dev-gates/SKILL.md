@@ -9,104 +9,104 @@ description: >-
 
 # AE Dev Gates
 
-Orchestration + **gates** uniquement. Pour le savoir dbt (modèles, `ref()`,
-`dbt show`, sélecteurs, tests, doc), utiliser le **plugin dbt** :
-`using-dbt-for-analytics-engineering`, `running-dbt-commands`, et leurs
+Orchestration + **gates** only. For dbt knowledge (models, `ref()`, `dbt show`,
+selectors, tests, docs), use the **dbt plugin**:
+`using-dbt-for-analytics-engineering`, `running-dbt-commands`, and their
 `references/`.
 
-Une mission projet (`mission-*`) peut durcir ces gates ; en cas de conflit, la
-mission prévaut.
+A project mission (`mission-*`) may tighten these gates; on conflict, the
+mission wins.
 
-## Ordre de session
+## Session order
 
-1. Identifier racine dbt, commande réelle (`dbt` / `uv run dbt` / …), target
-   d’écriture isolée — puis `dbt debug`.
-2. Clarifier besoin, **grain**, critères d’acceptation (plugin AE + mission).
-3. Lire SQL/YAML du sous-graphe ; cartographier avec `dbt list` / plugin.
-4. Explorer des données représentatives (`dbt show` — plugin).
-5. **Gate cardinalité** sur chaque jointure sensible (ci-dessous).
-6. Implémenter (YAML/tests puis SQL — plugin AE).
-7. **Gate lint** → compile ciblé.
-8. **Gate coût** → puis `dbt build` ciblé uniquement.
-9. Valider grain / métier / downstreams.
-10. Commit / MR **uniquement** sur demande explicite (**gate Git/MR**).
+1. Identify dbt root, real command (`dbt` / `uv run dbt` / …), isolated write
+   target — then `dbt debug`.
+2. Clarify need, **grain**, acceptance criteria (AE plugin + mission).
+3. Read SQL/YAML for the subgraph; map with `dbt list` / plugin.
+4. Explore representative data (`dbt show` — plugin).
+5. **Cardinality gate** on every sensitive join (below).
+6. Implement (YAML/tests then SQL — AE plugin).
+7. **Lint gate** → targeted compile.
+8. **Cost gate** → then targeted `dbt build` only.
+9. Validate grain / business rules / downstreams.
+10. Commit / MR **only** on explicit request (**Git/MR gate**).
 
-Ne jamais écrire en production pendant le dev. Ne jamais builder tout le projet
-sans accord.
+Never write to production during development. Never build the whole project
+without agreement.
 
-## Gate — target isolée
+## Gate — isolated target
 
-Écriture uniquement dans une target / schema personnel ou sandbox du projet.
-Si aucune n’existe, demander avant toute exécution qui matérialise.
+Write only to a personal or project sandbox target / schema. If none exists,
+ask before any materializing run.
 
-## Gate — cardinalité des jointures
+## Gate — join cardinality
 
-Avant de figer une jointure à risque, mesurer :
+Before locking a risky join, measure:
 
-- unicité de la clé à **droite** ;
-- lignes avant / après ;
-- clés avec 0, 1, ou N matches ;
-- max de matches pour une ligne source.
+- uniqueness of the key on the **right**;
+- row counts before / after;
+- keys with 0, 1, or N matches;
+- max matches for one source row.
 
-Dédupliquer la droite de façon **déterministe** si la clé n’est pas unique.
-Préserver les interfaces stables (noms, types, grain) sauf migration acceptée.
+Deduplicate the right side **deterministically** if the key is not unique.
+Preserve stable interfaces (names, types, grain) unless a migration is accepted.
 
 ## Gate — lint
 
-Si le projet a un linter SQL (ex. SQLFluff) : l’exécuter sur chaque `.sql`
-modifié **avant** compile/build. Zéro erreur. Pas d’auto-fix global aveugle.
+If the project has a SQL linter (e.g. SQLFluff): run it on every modified
+`.sql` **before** compile/build. Zero errors. No blind global auto-fix.
 
-Puis `parse` / `compile` avec sélecteur précis et
-`--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'` (voir
+Then `parse` / `compile` with a precise selector and
+`--warn-error-options '{"error": ["NoNodesForSelectionCriteria"]}'` (see
 `running-dbt-commands`).
 
-## Gate — coût
+## Gate — cost
 
-Avant tout `run` / `build` non trivial :
+Before any non-trivial `run` / `build`:
 
-1. Compiler le sous-graphe ciblé.
-2. Dry-run / EXPLAIN entrepôt (détails adapter → skill `tool-*` ou mission).
-3. Réduire les scans disproportionnés ; obtenir l’accord si coût notable.
+1. Compile the targeted subgraph.
+2. Warehouse dry-run / EXPLAIN (adapter details → `tool-*` skill or mission).
+3. Shrink disproportionate scans; get agreement if cost is notable.
 
-Seuils chiffrés = mission ou `tool-bigquery`, pas ce skill.
+Numeric thresholds belong in the mission or `tool-bigquery`, not this skill.
 
 ## Gate — Git / MR
 
-- Pas de commit, push, ni MR sans demande explicite.
-- Retirer config locale / contournements avant commit.
-- Description MR **minimale** (trois blocs), adaptée au dépôt :
+- No commit, push, or MR without an explicit request.
+- Strip local config / workarounds before commit.
+- **Minimal** MR description (three blocks), adapted to the repo:
 
 ```markdown
-## Changements techniques
-### Contexte
-### Avant
-### Après
-### Détail
+## Technical changes
+### Context
+### Before
+### After
+### Detail
 
-## Tests et validation
-| Étape | Commande / action | Résultat |
-|-------|-------------------|----------|
+## Tests and validation
+| Step | Command / action | Result |
+|------|------------------|--------|
 | Lint | | |
 | Compile | | |
 | Build | | |
-| Contrôles données | | |
+| Data checks | | |
 
-## Mise en production
+## Production rollout
 1. …
 ```
 
-Documenter ce qui a **réellement** été exécuté. Une mission peut imposer un
-template plus strict (ex. triage de tests locaux).
+Document what was **actually** run. A mission may require a stricter template
+(e.g. local test triage).
 
-## Checklist courte
+## Short checklist
 
 ```text
-- [ ] Target isolée + debug OK
-- [ ] Grain et acceptation clairs
-- [ ] Plugin dbt appliqué (explore / implémentation)
-- [ ] Cardinalités jointures mesurées
-- [ ] Lint + compile ciblés
-- [ ] Coût estimé puis build ciblé
-- [ ] Validation métier
-- [ ] Commit/MR seulement si demandés + template respecté
+- [ ] Isolated target + debug OK
+- [ ] Grain and acceptance clear
+- [ ] dbt plugin applied (explore / implement)
+- [ ] Join cardinalities measured
+- [ ] Targeted lint + compile
+- [ ] Cost estimated then targeted build
+- [ ] Business validation
+- [ ] Commit/MR only if requested + template followed
 ```

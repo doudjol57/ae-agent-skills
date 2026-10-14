@@ -16,7 +16,7 @@ Cursor skills corpus for Analytics Engineering. Same corpus on every machine
 **Language policy:** skill bodies and corpus docs in this package are **English
 only**.
 
-**Current focus:** dbt + Looker Studio (Data Studio), with warehouse/BI tool
+**Current focus:** dbt + Data Studio (Looker Studio), with warehouse/BI tool
 skills planned. **Portable vs project boundary:** the published package stops
 at L2 (+ generic L0/L1). Any **mission** (`mission-*`) belongs to a project
 repo — never in this package. The L3 slot exists for **any** project.
@@ -41,7 +41,7 @@ Mission  →  ae-dev-gates + dbt plugin  →  tool-* / ae-*
 | Layer | Prefix / name | Scope | Typical content |
 |-------|---------------|-------|-----------------|
 | L0 Domain | `ae-*` | Any AE project | Modeling, documentation (beyond the plugin) |
-| L1 Tool | `tool-*` + **dbt plugin** | Tech stack | BigQuery, Looker Studio, …; dbt = official plugin |
+| L1 Tool | `tool-*` + **dbt plugin** | Tech stack | BigQuery, Data Studio, …; dbt = official plugin |
 | L2 Gates | `ae-dev-gates` | Any dbt project | Session order + gates (no dbt rehash) |
 | L3 Mission | `mission-*` | One repo / project | Sandbox, conventions, GitLab, interfaces |
 | L4 Task | sections or `task-*` | One project routine | Local business routines |
@@ -63,8 +63,8 @@ Legend: **OK** · **WRITE** · **IMPROVE** · **ARCHIVE** · **REUSE** · **DEPR
 | Skill | Status | Role |
 |-------|--------|------|
 | dbt plugin | **REUSE** | Source of truth for modeling + CLI |
-| `tool-bigquery` | **WRITE** | Dry-run / cost thresholds |
-| `tool-looker-studio` | **WRITE** | Exposures, viz, LS-friendly types |
+| `tool-bigquery` | **IMPROVE** | Dry-run / cost thresholds — stub (no Cursor marketplace AE plugin) |
+| `tool-data-studio` | **IMPROVE** | Exposures, viz, Data Studio–friendly types — stub |
 | `tool-omni` | **WRITE** | Point at Omni Cursor skills + AE deltas only |
 | `tool-power-bi` | **WRITE** | Exposures / semantic model handoff |
 | `tool-dataform` | **WRITE** | Alternate transform stack vs dbt |
@@ -99,7 +99,8 @@ examples: test triage, campaign attribution — extract from the relevant missio
 ```text
 ae-corpus                          ← portable package
 ├── ae-data-modeling / ae-documentation / ae-data-testing  (L0, stubs)
-├── tool-bigquery / tool-looker-studio / …                 (L1, planned)
+├── tool-bigquery / tool-data-studio                       (L1, stubs)
+├── tool-omni / …                                          (L1, planned)
 ├── dbt plugin (external)                                  (L1)
 └── ae-dev-gates                                           (L2, shipped)
 
@@ -129,8 +130,8 @@ This skill adds only the deltas below.
 | YAML / exposures / BI docs | `ae-documentation` (stub) |
 | Test strategy | `ae-data-testing` (stub) |
 | Dev in a repo with a mission | `mission-<project>` (pulls gates + plugin) |
-| Cost / BQ dry-run | `tool-bigquery` (when shipped) |
-| Data Studio / viz | `tool-looker-studio` (when shipped) |
+| Cost / BQ dry-run | `tool-bigquery` (stub) |
+| Data Studio / viz | `tool-data-studio` (stub) |
 | Corpus onboarding | **`ae-corpus`** |
 
 ## Portability
@@ -145,11 +146,10 @@ Short template (frontmatter, inheritance headers by layer, MR checklist):
 
 ## Build order (next)
 
-1. Expand L0 stubs with AE collaboration (`IMPROVE` → `OK`).
-2. Write `tool-bigquery`, then `tool-looker-studio`.
-3. Projects: align each local mission on `mission-*` + L4 (outside this repo).
-4. P2 tools one skill at a time (`tool-omni` first if demand is highest).
-5. Keep this catalog up to date.
+1. Expand L0 / L1 stubs with AE collaboration (`IMPROVE` → `OK`).
+2. Projects: align each local mission on `mission-*` + L4 (outside this repo).
+3. P2 tools one skill at a time (`tool-omni` first if demand is highest).
+4. Keep this catalog up to date.
 
 ## Diagrams
 

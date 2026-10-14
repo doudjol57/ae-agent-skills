@@ -4,7 +4,7 @@ Portable **Analytics Engineering** skills for [Cursor](https://cursor.com) Agent
 
 **Shipped focus:** dbt session gates + corpus index.  
 **Ambition:** thin AE skills across transform stacks (dbt, Dataform, SQLMesh) and
-BI / semantic tools (Looker Studio, Omni, Power BI) — without forking official
+BI / semantic tools (Data Studio, Omni, Power BI) — without forking official
 Cursor or vendor plugins.
 
 Does **not** include project-specific mission skills (`mission-*` — one per repo).
@@ -29,8 +29,9 @@ plugins/ae-agent-skills/          # the plugin
 | [`ae-data-modeling`](plugins/ae-agent-skills/skills/ae-data-modeling/) | **Stub** | Grain, layers, contracts — expand with AEs |
 | [`ae-documentation`](plugins/ae-agent-skills/skills/ae-documentation/) | **Stub** | YAML / exposures / BI docs — expand with AEs |
 | [`ae-data-testing`](plugins/ae-agent-skills/skills/ae-data-testing/) | **Stub** | Testing patterns — may later fold into modeling |
-| `tool-bigquery` | Planned | Dry-run / cost thresholds |
-| `tool-looker-studio` | Planned | Exposures, viz, LS-friendly types |
+| [`tool-bigquery`](plugins/ae-agent-skills/skills/tool-bigquery/) | **Stub** | Dry-run / cost thresholds — expand with AEs |
+| [`tool-data-studio`](plugins/ae-agent-skills/skills/tool-data-studio/) | **Stub** | Exposures, viz, Data Studio–friendly types |
+
 | `tool-omni` | Planned | Point at Omni skills + AE deltas |
 | `tool-power-bi` | Planned | Exposures / semantic model handoff |
 | `tool-dataform` | Planned | Alternate transform stack vs dbt |

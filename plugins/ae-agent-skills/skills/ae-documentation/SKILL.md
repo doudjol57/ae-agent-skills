@@ -31,7 +31,7 @@ This skill adds only documentation guidance — do not restate the plugin or gat
 - [ ] Minimum bar for model and column descriptions
 - [ ] Exposure patterns (owners, maturity, depends_on)
 - [ ] What belongs in dbt docs vs BI tool vs mission `project-*.md`
-- [ ] Cross-link to `tool-looker-studio` / other BI skills when they exist
+- [ ] Cross-link to [`tool-data-studio`](../tool-data-studio/SKILL.md) / other BI skills
 
 ## Out of scope
 

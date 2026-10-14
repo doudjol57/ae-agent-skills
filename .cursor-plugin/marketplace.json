@@ -4,15 +4,15 @@
     "name": "Converteo"
   },
   "metadata": {
-    "description": "Team marketplace — portable Analytics Engineering skills (dbt gates today; BI/transform tools planned). No project-specific mission skills.",
-    "version": "0.2.0",
+    "description": "Team marketplace — portable Analytics Engineering skills (dbt gates, L0/L1 stubs; more BI/transform tools planned). No project-specific mission skills.",
+    "version": "0.3.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "ae-agent-skills",
       "source": "ae-agent-skills",
-      "description": "Corpus index, dbt session gates, and L0 domain stubs. Planned L1 tool skills; mission skills stay per-project, outside this package."
+      "description": "Corpus index, dbt session gates, L0 domain stubs, and L1 tool stubs (BigQuery, Data Studio). Further tool skills planned; mission skills stay per-project."
     }
   ]
 }

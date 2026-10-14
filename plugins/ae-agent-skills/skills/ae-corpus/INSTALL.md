@@ -16,8 +16,8 @@ L0–L2 portable skills only. **No** project missions (`mission-*`).
 | Status | Skills |
 |--------|--------|
 | Shipped | `ae-corpus`, `ae-dev-gates` |
-| Stub (expand with AEs) | `ae-data-modeling`, `ae-documentation`, `ae-data-testing` |
-| Planned | `tool-bigquery`, `tool-looker-studio`, `tool-omni`, `tool-power-bi`, `tool-dataform`, `tool-sqlmesh` |
+| Stub (expand with AEs) | `ae-data-modeling`, `ae-documentation`, `ae-data-testing`, `tool-bigquery`, `tool-data-studio` |
+| Planned | `tool-omni`, `tool-power-bi`, `tool-dataform`, `tool-sqlmesh` |
 
 ```text
 .cursor-plugin/marketplace.json
@@ -27,7 +27,9 @@ plugins/ae-agent-skills/
     ├── ae-dev-gates/        # shipped
     ├── ae-data-modeling/    # stub
     ├── ae-documentation/    # stub
-    └── ae-data-testing/     # stub
+    ├── ae-data-testing/     # stub
+    ├── tool-bigquery/       # stub
+    └── tool-data-studio/    # stub
 ```
 
 ## Quick paths

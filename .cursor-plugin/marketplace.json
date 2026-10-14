@@ -1,0 +1,18 @@
+{
+  "name": "converteo-ae-skills",
+  "owner": {
+    "name": "Converteo"
+  },
+  "metadata": {
+    "description": "Team marketplace — portable Analytics Engineering skills (dbt + Looker Studio). No project-specific mission skills.",
+    "version": "0.1.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "ae-agent-skills",
+      "source": "ae-agent-skills",
+      "description": "Corpus index (ae-corpus) and dbt session gates (ae-dev-gates). Mission skills stay per-project, outside this package."
+    }
+  ]
+}

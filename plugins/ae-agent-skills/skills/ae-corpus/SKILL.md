@@ -138,7 +138,7 @@ Ce skill n’ajoute que les deltas ci-dessous.
 
 ## Portabilité
 
-Repo publié : https://github.com/doudjol57/ae-agent-skills  
+Repo : marketplace team Converteo (privé sous l’org GitHub).  
 Voir [INSTALL.md](INSTALL.md).
 
 ## Ordre de construction suivant

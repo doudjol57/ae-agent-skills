@@ -95,6 +95,7 @@ Mission (per project, not in this repo)
 
 ## Contributing
 
+- Follow the [skill authoring template](plugins/ae-agent-skills/skills/ae-corpus/skill-template.md).
 - No reformulation of the official dbt plugin — extend via `ae-dev-gates` / new L0–L1 skills.
 - Keep each `SKILL.md` under ~500 lines; put detail in sibling markdown files.
 - Update `ae-corpus` catalog when adding a skill.
